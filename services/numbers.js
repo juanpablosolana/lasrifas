@@ -9,9 +9,20 @@ export default function Numbers({ numbers, onChange = Function.prototype, userNu
   return (
     <div>
       <h1>Numeros de la suerte disponibles: </h1>
-      {numbersArray.map((number) => (
-        <button key={number} className={userNumbers.includes(number + 1) ? styles.buttonBack : styles.button} onClick={() => onChange(number + 1)} >{number + 1} </button>
-      ))}
+      {
+        numbersArray.map((number) => (
+          <button
+            key={number}
+            className={
+              userNumbers.includes(number + 1)
+                ? styles.buttonBlack
+                : styles.button
+            }
+            onClick={() => onChange(number + 1)}
+          >
+            {number + 1}
+          </button>
+        ))}
     </div>
   )
 }
