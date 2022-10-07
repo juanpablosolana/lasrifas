@@ -11,12 +11,11 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Numbers numbers={400} onChange={handlerUpdateNumbers} userNumbers={userNumbers} />
       <h2> Tus números son:      </h2>
       {userNumbers.map((number) => (
         <span key={number}> {number} -</span>
       ))}
-
+      <Numbers numbers={300} onChange={handlerUpdateNumbers} userNumbers={userNumbers} />
     </div>
   )
 }
