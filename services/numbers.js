@@ -1,5 +1,6 @@
+import styles from '../styles/Home.module.css'
 
-export default function Numbers({ numbers, onChange = Function.prototype }) {
+export default function Numbers({ numbers, onChange = Function.prototype, userNumbers }) {
   if (numbers === NaN) {
     return null
   }
@@ -9,7 +10,7 @@ export default function Numbers({ numbers, onChange = Function.prototype }) {
     <div>
       <h1>Numeros de la suerte disponibles: </h1>
       {numbersArray.map((number) => (
-        <button key={number} onClick={() => onChange(number + 1)}>{number + 1} </button>
+        <button key={number} className={userNumbers.includes(number + 1) ? styles.buttonBack : styles.button} onClick={() => onChange(number + 1)} >{number + 1} </button>
       ))}
     </div>
   )
