@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Numbers from '../services/numbers'
 import Random from '../services/randomNumbers'
