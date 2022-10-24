@@ -4,7 +4,7 @@ import Numbers from '../services/numbers'
 import Random from '../services/randomNumbers'
 
 export default function Home() {
-  const maxNumbers = 3
+  const maxNumbers = 300
   const [userNumbers, setUserNumbers] = useState([])
 
   const handlerUpdateNumbers = (number) => {
@@ -24,7 +24,7 @@ export default function Home() {
     <div className={styles.container}>
       <div>
         <h1 className={styles.title}>
-          Numeros de la suerte
+          Números de la suerte
         </h1>
         {
           userNumbers.length !== maxNumbers
@@ -33,7 +33,6 @@ export default function Home() {
             </button>
             : null
         }
-
 
         <h2> Tus números son: </h2>
         {
