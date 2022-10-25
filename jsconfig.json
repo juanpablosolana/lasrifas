@@ -4,7 +4,22 @@
     "paths": {
       "@styles/*": [
         "styles/*"
-      ]
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@common/*": [
+        "./common/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@layout/*": [
+        "pages/layout/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
     }
   }
 }
