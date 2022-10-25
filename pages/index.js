@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const navigation = [
   { name: 'Inicio', href: '/' },
@@ -29,10 +31,12 @@ export default function Home() {
                   <div className="flex w-full items-center justify-between md:w-auto">
                     <a href="#">
                       <span className="sr-only">Las Rifas</span>
-                      <img
+                      <Image
                         alt="Las Rifas"
                         className="h-8 w-auto sm:h-10"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        src="https://tailwindui.com/img/logos/mark.svg"
+                        width={40}
+                        height={40}
                       />
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
@@ -72,10 +76,12 @@ export default function Home() {
                 <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
                   <div className="flex items-center justify-between px-5 pt-4">
                     <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt=""
+                      <Image
+                        alt="Las Rifas"
+                        className="h-8 w-auto sm:h-10"
+                        src="https://tailwindui.com/img/logos/mark.svg"
+                        width={40}
+                        height={40}
                       />
                     </div>
                     <div className="-mr-2">
@@ -118,20 +124,24 @@ export default function Home() {
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
-                  <a
-                    href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
-                  >
-                    Comenzar
-                  </a>
+                  <Link href="/api/auth/signin">
+                    <a
+                      href="#"
+                      className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
+                    >
+                      Comenzar
+                    </a>
+                  </Link>
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <a
-                    href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
-                  >
-                    Ver la demo
-                  </a>
+                  <Link href="/demo">
+                    <a
+
+                      className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
+                    >
+                      Ver la demo
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -139,10 +149,12 @@ export default function Home() {
         </div>
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
+        <Image
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
           src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          alt=""
+          alt="trabajando en la computadora"
+          width={2850}
+          height={2850}
         />
       </div>
     </div>
