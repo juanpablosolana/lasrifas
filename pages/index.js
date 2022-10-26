@@ -7,6 +7,7 @@ import Link from 'next/link'
 const navigation = [
   { name: 'Inicio', href: '/' },
   { name: 'Sorteos activos', href: '/sorteos-activos' },
+  { name: 'Aviso de privacidad', href: '/aviso-de-privacidad' },
 ]
 
 export default function Home() {
