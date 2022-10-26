@@ -3,6 +3,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSession } from "next-auth/react"
 
 const navigation = [
   { name: 'Inicio', href: '/' },
@@ -11,6 +12,8 @@ const navigation = [
 ]
 
 export default function Home() {
+  const { data: session, status } = useSession()
+
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl">
@@ -50,13 +53,18 @@ export default function Home() {
                 </div>
                 <div className="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
                   {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
+                    <Link key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
-                  <Link href="/api/auth/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Ingresar
-                  </Link>
+                  {
+                    (status !== 'authenticated')
+                      ?
+                      <Link href="/api/auth/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        Ingresar
+                      </Link>
+                      : null
+                  }
                 </div>
               </nav>
             </div>
@@ -103,12 +111,14 @@ export default function Home() {
                       </Link>
                     ))}
                   </div>
-                  <Link
-                    href="/api/auth/signin"
-                    className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
-                  >
-                    Ingresar
-                  </Link>
+                  {
+                    (status !== 'authenticated')
+                      ?
+                      <Link href="/api/auth/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        Ingresar
+                      </Link>
+                      : null
+                  }
                 </div>
               </Popover.Panel>
             </Transition>

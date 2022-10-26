@@ -21,7 +21,6 @@ function classNames(...classes) {
 
 export default function Header() {
   const { data: session, status } = useSession()
-  console.log(session, status)
 
   if (session) {
     return (
