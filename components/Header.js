@@ -20,7 +20,7 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
 
   if (session) {
     return (
