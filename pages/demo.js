@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import Loading from "@components/Loading";
 
 export default function Demo() {
   const [isAgreed, setIsAgreed] = useState(false);
@@ -21,7 +22,7 @@ export default function Demo() {
         <p>Ingresa los datos para generar tu sorteo</p>
       </div>
 
-      <form className="w-full max-w-sm" onSubmit={handlerSubmit}>
+      <form className="w-full max-w-sm inline-block" onSubmit={handlerSubmit}>
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name" >
@@ -101,6 +102,9 @@ export default function Demo() {
           </div>
         </div>
       </form>
+      <div className="inline-block margin-auto">
+        <Loading />
+      </div>
     </>
   )
 }

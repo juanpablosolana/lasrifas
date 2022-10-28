@@ -13,11 +13,11 @@ export default function Terminos() {
         Sorteos Pro NO organiza, avala, respalda, ni se hace responsable de ninguno de los sorteos dentro de esta plataforma,
       </p>
       <p>
-        los responsables se compromete a cumplir con las bases de los sorteos y a hacer cumplir las reglas de los mismos.
+        los responsables se comprometen a cumplir con las bases de los sorteos y a hacer cumplir las reglas de los mismos.
       </p>
       <p>
         La información e imágenes publicadas en este sitio han sido proporcionadas por los responsables de cada sorteo, del contenido publicado, de los sorteos y del tratamiento de la información proporcionada o recabada en el mismo.
-        Por otra parte, Sorteos Pro únicamente actúa como prestador de servicios de diseño web, desarrollo web, mantenimiento del sitio.
+        Por otra parte, Sorteos Pro únicamente actúa como prestador de servicios de diseño web, desarrollo web y mantenimiento del sitio.
       </p>
     </div>
   )
