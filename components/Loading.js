@@ -4,7 +4,7 @@ const Loading = () => {
 
   const [mensaje, setMensaje] = useState([])
   useEffect(() => {
-    const mensajes = ['Cargando servicios', 'Generando layout', 'Aplicando configuración..', 'Finalizando...']
+    const mensajes = ['Cargando servicios', 'Generando layout', 'Aplicando configuración', 'Finalizando...']
     mensajes.map((item, index) => {
       setTimeout(() => {
         setMensaje(item)

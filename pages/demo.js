@@ -4,6 +4,16 @@ import Loading from "@components/Loading";
 
 export default function Demo() {
   const [isAgreed, setIsAgreed] = useState(false);
+  const [lottoName, setLottoName] = useState("");
+  const [lottoDescription, setLottoDescription] = useState("");
+  const [lottoNumbers, setLottoNumbers] = useState(0);
+  const [lottoImage, setLottoImage] = useState("");
+  const [lottoContact, setLottoContact] = useState("");
+  const [lottoDate, setLottoDate] = useState("");
+
+  const handlerUploadImage = ({ target }) => {
+    console.log(target.files[0]);
+  };
 
   const handlerTerms = () => {
     setIsAgreed(!isAgreed);
@@ -11,9 +21,15 @@ export default function Demo() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log("submit", e);
+    setLottoName(e.target[0].value);
+    setLottoDescription(e.target[1].value);
+    setLottoNumbers(e.target[2].value);
+    setLottoDate(e.target[3].value);
+    setLottoImage(e.target[4].value);
+    setLottoContact(e.target[5].value);
   };
 
+  console.log(lottoName, lottoDescription, lottoNumbers, lottoDate, lottoImage, lottoContact);
 
   return (
     <>
@@ -56,11 +72,22 @@ export default function Demo() {
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
+              Fecha del sorteo
+            </label>
+          </div>
+          <div className="md:w-2/3">
+            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="numbers" type="date" required="required" />
+          </div>
+        </div>
+        <div className="md:flex md:items-center mb-6">
+          <div className="md:w-1/3">
+            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
               Imagenes
             </label>
           </div>
           <div className="md:w-2/3">
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="picture" type="file" accept="image/*" required="required" />
+            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="picture" type="file" accept="image/*" required="required" onChange={handlerUploadImage} />
+
           </div>
         </div>
         <div className="md:flex md:items-center mb-6">
