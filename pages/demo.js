@@ -4,15 +4,14 @@ import Loading from "@components/Loading";
 
 export default function Demo() {
   const [isAgreed, setIsAgreed] = useState(false);
-  const [lottoName, setLottoName] = useState("");
-  const [lottoDescription, setLottoDescription] = useState("");
-  const [lottoNumbers, setLottoNumbers] = useState(0);
-  const [lottoImage, setLottoImage] = useState("");
-  const [lottoContact, setLottoContact] = useState("");
-  const [lottoDate, setLottoDate] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [lottoData, setLottoData] = useState({});
 
-  const handlerUploadImage = ({ target }) => {
-    console.log(target.files[0]);
+  const handlerUploadImage = (file) => {
+    setIsLoading(true);
+    console.log(file)
+    setLottoData({ ...lottoData, image: file });
+    setIsLoading(false);
   };
 
   const handlerTerms = () => {
@@ -20,16 +19,17 @@ export default function Demo() {
   };
 
   const handlerSubmit = (e) => {
+    console.log(e)
     e.preventDefault();
-    setLottoName(e.target[0].value);
-    setLottoDescription(e.target[1].value);
-    setLottoNumbers(e.target[2].value);
-    setLottoDate(e.target[3].value);
-    setLottoImage(e.target[4].value);
-    setLottoContact(e.target[5].value);
+    setLottoData({
+      ...lottoData,
+      name: e.target.name.value,
+      description: e.target.description.value,
+      numbers: e.target.numbers.value,
+      date: new Date(e.target.date.value.split('-')).toLocaleDateString('es-MX'),
+      contact: e.target.contact.value
+    });
   };
-
-  console.log(lottoName, lottoDescription, lottoNumbers, lottoDate, lottoImage, lottoContact);
 
   return (
     <>
@@ -76,7 +76,7 @@ export default function Demo() {
             </label>
           </div>
           <div className="md:w-2/3">
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="numbers" type="date" required="required" />
+            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="date" type="date" required="required" />
           </div>
         </div>
         <div className="md:flex md:items-center mb-6">
@@ -86,7 +86,7 @@ export default function Demo() {
             </label>
           </div>
           <div className="md:w-2/3">
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="picture" type="file" accept="image/*" required="required" onChange={handlerUploadImage} />
+            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="picture" type="file" accept="image/*" required="required" onChange={e => handlerUploadImage(e.target.files[0])} />
 
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function Demo() {
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">
             {
-              isAgreed
+              isAgreed && !isLoading
                 ?
                 <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                   Crear Sorteo
