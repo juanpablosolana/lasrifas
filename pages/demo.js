@@ -1,25 +1,43 @@
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Loading from "@components/Loading";
 
 export default function Demo() {
   const [isAgreed, setIsAgreed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [lottoData, setLottoData] = useState({});
+  const [lottoImage, setLottoImage] = useState("");
+  const validImageType = ["image/gif", "image/jpeg", "image/png", "image/jpg"];
 
-  const handlerUploadImage = (file) => {
+  const handlerUploadImage = (e) => {
+    let file = e.target.files[0];
     setIsLoading(true);
-    console.log(file)
-    setLottoData({ ...lottoData, image: file });
+    if (validImageType.includes(file.type)) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setLottoImage(reader.result);
+        setLottoData({ ...lottoData, image: reader.result });
+      }
+    } else {
+      e.target.value = null;
+      alert("El archivo no es una imagen válida");
+    }
+    //   setIsLoading(true);
+    //   console.log(file)
+    //   setLottoData({ ...lottoData, image: file });
+    //   setIsLoading(false);
+    // };
     setIsLoading(false);
-  };
+  }
+
 
   const handlerTerms = () => {
     setIsAgreed(!isAgreed);
   };
 
   const handlerSubmit = (e) => {
-    console.log(e)
     e.preventDefault();
     setLottoData({
       ...lottoData,
@@ -86,8 +104,11 @@ export default function Demo() {
             </label>
           </div>
           <div className="md:w-2/3">
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="picture" type="file" accept="image/*" required="required" onChange={e => handlerUploadImage(e.target.files[0])} />
-
+            Image
+            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="picture" type="file" accept="image/*" required="required" onChange={handlerUploadImage} />
+            {
+              lottoImage ? <Image src={`data:${lottoImage}`} alt="Lotto Image" width={150} height={150} /> : null
+            }
           </div>
         </div>
         <div className="md:flex md:items-center mb-6">
@@ -130,7 +151,7 @@ export default function Demo() {
         </div>
       </form>
       <div className="inline-block margin-auto">
-        <Loading />
+        {isLoading ? <Loading /> : null}
       </div>
     </>
   )
