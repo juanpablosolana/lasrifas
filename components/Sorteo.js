@@ -3,8 +3,9 @@ import styles from '../styles/Home.module.css'
 import Numbers from '../services/numbers'
 import Random from '../services/randomNumbers'
 
-export default function Home() {
-  const maxNumbers = 300
+export default function Sorteo({ lottoData }) {
+  console.log(lottoData)
+  const maxNumbers = lottoData.numbers
   const [userNumbers, setUserNumbers] = useState([])
 
   const handlerUpdateNumbers = (number) => {
@@ -24,7 +25,7 @@ export default function Home() {
     <div className={styles.container}>
       <div>
         <h1 className={styles.title}>
-          Números de la suerte
+          {lottoData.name}
         </h1>
         {
           userNumbers.length !== maxNumbers

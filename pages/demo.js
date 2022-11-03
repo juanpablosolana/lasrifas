@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Loading from "@components/Loading";
+import Sorteo from "@components/sorteo";
 
 export default function Demo() {
   const [isAgreed, setIsAgreed] = useState(false);
@@ -11,7 +12,7 @@ export default function Demo() {
   const validImageType = ["image/gif", "image/jpeg", "image/png", "image/jpg"];
 
   const handlerUploadImage = (e) => {
-    let file = e.target.files[0];
+    const file = e.target.files[0];
     setIsLoading(true);
     if (validImageType.includes(file.type)) {
       const reader = new FileReader();
@@ -43,7 +44,7 @@ export default function Demo() {
       ...lottoData,
       name: e.target.name.value,
       description: e.target.description.value,
-      numbers: e.target.numbers.value,
+      numbers: Number(e.target.numbers.value),
       date: new Date(e.target.date.value.split('-')).toLocaleDateString('es-MX'),
       contact: e.target.contact.value
     });
@@ -100,7 +101,7 @@ export default function Demo() {
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
-              Imagenes
+              Foto
             </label>
           </div>
           <div className="md:w-2/3">
@@ -152,6 +153,7 @@ export default function Demo() {
       </form>
       <div className="inline-block margin-auto">
         {isLoading ? <Loading /> : null}
+        <Sorteo lottoData={lottoData} />
       </div>
     </>
   )
