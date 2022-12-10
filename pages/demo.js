@@ -7,6 +7,7 @@ import Sorteo from "@components/sorteo";
 export default function Demo() {
   const [isAgreed, setIsAgreed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const [lottoData, setLottoData] = useState({});
   const [lottoImage, setLottoImage] = useState("");
   const validImageType = ["image/gif", "image/jpeg", "image/png", "image/jpg"];
@@ -48,6 +49,12 @@ export default function Demo() {
       date: new Date(e.target.date.value.split('-')).toLocaleDateString('es-MX'),
       contact: e.target.contact.value
     });
+
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 7000);
+    setIsReady(true);
   };
 
   return (
@@ -153,7 +160,7 @@ export default function Demo() {
       </form>
       <div className="inline-block margin-auto">
         {isLoading ? <Loading /> : null}
-        <Sorteo lottoData={lottoData} />
+        {!isLoading && isReady ? <Sorteo lottoData={lottoData} /> : null}
       </div>
     </>
   )

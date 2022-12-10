@@ -8,7 +8,7 @@ const Loading = () => {
     mensajes.map((item, index) => {
       setTimeout(() => {
         setMensaje(item)
-      }, 4000 * index)
+      }, 2000 * index)
     }
     )
   }, []);
