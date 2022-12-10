@@ -26,14 +26,10 @@ export default function Demo() {
       e.target.value = null;
       alert("El archivo no es una imagen válida");
     }
-    //   setIsLoading(true);
-    //   console.log(file)
-    //   setLottoData({ ...lottoData, image: file });
-    //   setIsLoading(false);
-    // };
-    setIsLoading(false);
-  }
-
+      setIsLoading(true);
+      setLottoData({ ...lottoData, image: file });
+      setIsLoading(false);
+    };
 
   const handlerTerms = () => {
     setIsAgreed(!isAgreed);

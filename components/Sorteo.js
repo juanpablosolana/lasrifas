@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Numbers from '../services/numbers'
 import Random from '../services/randomNumbers'
@@ -27,6 +28,21 @@ export default function Sorteo({ lottoData }) {
         <h1 className={styles.title}>
           {lottoData.name}
         </h1>
+        <p className={styles.description}>
+          {lottoData.description}
+        </p>
+        <p className={styles.description}>
+          {lottoData.date}
+        </p>
+        <p className={styles.description}>
+          {lottoData.contact}
+        </p>
+        <Image
+          src={lottoData.image}
+          alt="Picture of the author"
+          width={500}
+          height={500}
+        />
         {
           userNumbers.length !== maxNumbers
             ? <button onClick={handlerRandomNumbers}>
