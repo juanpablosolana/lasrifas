@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Loading from "@components/Loading";
-import Sorteo from "@components/sorteo";
+import Sorteo from "@components/Sorteo";
 
 export default function Demo() {
   const [isAgreed, setIsAgreed] = useState(false);
