@@ -55,12 +55,17 @@ export default function Demo() {
 
   return (
     <>
-      <div className="gap">
+      {
+        !isReady &&
+        <div className="gap">
         <h1>Bienvenido a tu sorteo</h1>
         <p>Ingresa los datos para generar tu sorteo</p>
-      </div>
+        </div>
+      }
 
-      <form className="w-full max-w-sm inline-block" onSubmit={handlerSubmit}>
+      {
+        !isReady &&
+        <form className="w-full max-w-sm inline-block" onSubmit={handlerSubmit}>
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name" >
@@ -153,7 +158,9 @@ export default function Demo() {
             }
           </div>
         </div>
-      </form>
+        </form>
+      }
+
       <div className="inline-block margin-auto">
         {isLoading ? <Loading /> : null}
         {!isLoading && isReady ? <Sorteo lottoData={lottoData} /> : null}

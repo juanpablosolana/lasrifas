@@ -28,21 +28,21 @@ export default function Sorteo({ lottoData }) {
         <h1 className={styles.title}>
           {lottoData.name}
         </h1>
-        <p className={styles.description}>
+        <div className={styles.description}>
           {lottoData.description}
-        </p>
-        <p className={styles.description}>
-          {lottoData.date}
-        </p>
-        <p className={styles.description}>
-          {lottoData.contact}
-        </p>
-        <Image
-          src={lottoData.image}
-          alt="Picture of the author"
-          width={500}
-          height={500}
-        />
+           <p>
+            Para el día: {lottoData.date}
+            Organizada por: {lottoData.contact}
+          </p>
+           <Image
+            className='image'
+            src={lottoData.image}
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
+        </div>
+
         {
           userNumbers.length !== maxNumbers
             ? <button onClick={handlerRandomNumbers}>
